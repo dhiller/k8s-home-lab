@@ -1,0 +1,14 @@
+# see https://dev.to/carminezacc/creating-a-kubernetes-cluster-with-fedora-coreos-36-j17
+variant: fcos
+version: 1.5.0
+ignition:
+  config:
+    merge:
+    - local: fcos-base.ign
+storage:
+  files:
+  - path: /etc/hostname
+    mode: 0644
+    contents:
+      inline: |
+        control-plane-1

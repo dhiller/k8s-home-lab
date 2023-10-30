@@ -1,0 +1,21 @@
+# see https://dev.to/carminezacc/creating-a-kubernetes-cluster-with-fedora-coreos-36-j17
+variant: fcos
+version: 1.5.0
+ignition:
+  config:
+    merge:
+    - local: fcos-base.ign
+storage:
+  disks:
+  # add an additional partition to host the storage filesystem
+  - device: /dev/disk/by-id/coreos-boot-disk
+    partitions:
+    - size_mib: 0
+      start_mib: 128000
+      label: ceph-storage
+  files:
+    - path: /etc/hostname
+      mode: 0644
+      contents:
+        inline: |
+          worker-1
