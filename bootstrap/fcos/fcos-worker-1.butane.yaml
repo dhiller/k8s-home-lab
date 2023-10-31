@@ -7,12 +7,13 @@ ignition:
     - local: fcos-base.ign
 storage:
   disks:
-  # add an additional partition to host the storage filesystem
+  # add a partition to host the storage filesystem
   - device: /dev/disk/by-id/coreos-boot-disk
     partitions:
     - size_mib: 0
       start_mib: 128000
-      label: ceph-storage
+      # do NOT use the word 'ceph' inside the label, otherwise the partition will not get picked up
+      label: block-storage
   files:
     - path: /etc/hostname
       mode: 0644
