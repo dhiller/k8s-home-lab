@@ -66,6 +66,29 @@ Execute
 
 to install both components.
 
+> [!NOTE]
+> CDI requires the testing component nodeport upload proxy currently to upload images
+
+To install node port upload proxy service, execute
+
+```bash
+kubectl create -f ./bootstrap/k8s/cdi/uploadproxy-nodeport.yaml
+```
+
+Then use a port-forward to expose the upload nodeport service
+
+```bash
+kubectl port-forward -n cdi service/cdi-uploadproxy-nodeport 18443:443 &
+```
+
+Example upload:
+```bash
+kubectl virt image-upload pvc win10cd-pvc --size 6Gi \
+    --image-path=$HOME/Downloads/Win10_22H2_German_x64v1.iso \
+    --storage-class rook-ceph-block --block-volume --insecure \
+    --uploadproxy-url=https://127.0.0.1:18443
+```
+
 ## References
 * [Creating a Kubernetes cluster with fedora coreos (Carmine Zaccagnino)](https://dev.to/carminezacc/creating-a-kubernetes-cluster-with-fedora-coreos-36-j17)
 * [Setting up single node ceph cluster for Kubernetes (V. Rusinov)](https://www.rusinov.ie/en/posts/2020/setting-up-single-node-ceph-cluster-for-kubernetes/)
