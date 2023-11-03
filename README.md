@@ -69,3 +69,4 @@ to install both components.
 ## References
 * [Creating a Kubernetes cluster with fedora coreos (Carmine Zaccagnino)](https://dev.to/carminezacc/creating-a-kubernetes-cluster-with-fedora-coreos-36-j17)
 * [Setting up single node ceph cluster for Kubernetes (V. Rusinov)](https://www.rusinov.ie/en/posts/2020/setting-up-single-node-ceph-cluster-for-kubernetes/)
+* [The Ultimate Rook And Ceph Survival Guide (CloudOps)](https://cloudopsofficial.medium.com/the-ultimate-rook-and-ceph-survival-guide-eff198a5764a)
